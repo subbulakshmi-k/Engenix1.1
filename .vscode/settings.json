@@ -1,0 +1,36 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.validProperties": [],
+  "css.lint.unknownProperties": "ignore",
+  "css.completion.completePropertyWithSemicolon": false,
+  "css.hover.documentation": false,
+  "css.hover.references": false,
+  "css.completion.triggerPropertyValueCompletion": false,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.suggestions": true,
+  "tailwindCSS.validate": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.customData": [".vscode/css_custom_data.json"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "never"
+    }
+  },
+  "problems.decorations.enabled": false,
+  "editor.renderValidationDecorations": "off",
+  "git.ignoreLimitWarning": true
+}

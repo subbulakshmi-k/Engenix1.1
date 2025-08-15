@@ -1,0 +1,290 @@
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Google Fonts - Modern Electric Theme */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for Electric Theme */
+:root {
+  --electric-blue: #00d4ff;
+  --electric-purple: #8b5cf6;
+  --electric-yellow: #fbbf24;
+  --electric-green: #10b981;
+  --electric-pink: #ec4899;
+  --dark-bg: #0f0f23;
+  --darker-bg: #050510;
+  --electric-gradient: linear-gradient(135deg, var(--electric-blue), var(--electric-purple));
+  --neon-glow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  line-height: 1.6;
+  color: #e2e8f0;
+  background: var(--dark-bg);
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Electric Background Animation */
+.electric-bg {
+  background: linear-gradient(45deg, #0f0f23, #1a1a3e, #0f0f23);
+  background-size: 400% 400%;
+  animation: electricFlow 8s ease-in-out infinite;
+  position: relative;
+}
+
+.electric-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+  animation: electricPulse 6s ease-in-out infinite;
+}
+
+@keyframes electricFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes electricPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Neon Text Effects */
+.neon-text {
+  font-family: 'Orbitron', monospace;
+  text-shadow: var(--neon-glow);
+  animation: neonFlicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Electric Buttons */
+.btn-electric {
+  background: var(--electric-gradient);
+  color: white;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-electric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-electric:hover::before {
+  left: 100%;
+}
+
+.btn-electric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+  border-color: var(--electric-blue);
+}
+
+.btn-electric-outline {
+  background: transparent;
+  color: var(--electric-blue);
+  border: 2px solid var(--electric-blue);
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-electric-outline:hover {
+  background: var(--electric-blue);
+  color: var(--dark-bg);
+  box-shadow: 0 0 30px var(--electric-blue);
+  transform: translateY(-2px);
+}
+
+/* Electric Cards */
+.electric-card {
+  background: rgba(15, 15, 35, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.electric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--electric-gradient);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.electric-card:hover::before {
+  transform: scaleX(1);
+}
+
+.electric-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--electric-blue);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+}
+
+/* Glowing Icons */
+.glow-icon {
+  filter: drop-shadow(0 0 10px currentColor);
+  animation: iconGlow 3s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px currentColor); }
+  50% { filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 30px currentColor); }
+}
+
+/* Electric Grid Pattern */
+.electric-grid {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* Floating Elements */
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Electric Input Fields */
+.electric-input {
+  background: rgba(15, 15, 35, 0.8);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: #e2e8f0;
+  font-family: 'Exo 2', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.electric-input:focus {
+  outline: none;
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(15, 15, 35, 0.9);
+}
+
+.electric-input::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+}
+
+/* Lightning Animation */
+.lightning {
+  position: relative;
+}
+
+.lightning::after {
+  content: '⚡';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  color: var(--electric-yellow);
+  animation: lightningFlash 2s infinite;
+}
+
+@keyframes lightningFlash {
+  0%, 90%, 100% { opacity: 0; }
+  5%, 85% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .btn-electric,
+  .btn-electric-outline {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .electric-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--electric-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue);
+}
+
+/* Line Clamp Utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

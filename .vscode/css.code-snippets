@@ -1,0 +1,22 @@
+{
+  "Tailwind Apply": {
+    "prefix": "@apply",
+    "body": ["@apply $1"],
+    "description": "Tailwind CSS @apply directive"
+  },
+  "Tailwind Base": {
+    "prefix": "@tailwind base",
+    "body": ["@tailwind base;"],
+    "description": "Tailwind CSS base styles"
+  },
+  "Tailwind Components": {
+    "prefix": "@tailwind components",
+    "body": ["@tailwind components;"],
+    "description": "Tailwind CSS components"
+  },
+  "Tailwind Utilities": {
+    "prefix": "@tailwind utilities",
+    "body": ["@tailwind utilities;"],
+    "description": "Tailwind CSS utilities"
+  }
+}
