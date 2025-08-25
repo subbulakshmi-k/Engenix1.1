@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import CartIcon from './CartIcon';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,6 +61,11 @@ const Navbar = () => {
               >
                 🔑 Admin
               </Link>
+              
+              {/* Cart Icon */}
+              <div className="ml-4">
+                <CartIcon />
+              </div>
             </div>
           </div>
 
@@ -117,6 +123,16 @@ const Navbar = () => {
             >
               <span className="glow-icon">🔐</span>
               <span>Login</span>
+            </Link>
+            
+            {/* Mobile Cart Link */}
+            <Link
+              to="/cart"
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-medium text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 mt-4"
+            >
+              <span className="glow-icon">🛒</span>
+              <span>Shopping Cart</span>
             </Link>
           </div>
         </div>

@@ -9,15 +9,16 @@
 /* CSS Variables for Electric Theme */
 :root {
   --electric-blue: #00d4ff;
-  --electric-purple: #8b5cf6;
+  --electric-purple: #8e66ec;
   --electric-yellow: #fbbf24;
   --electric-green: #10b981;
   --electric-pink: #ec4899;
-  --dark-bg: #0f0f23;
+  --dark-bg: #1e1e30;
   --darker-bg: #050510;
   --electric-gradient: linear-gradient(135deg, var(--electric-blue), var(--electric-purple));
   --neon-glow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
 }
+
 
 /* Base Styles */
 * {
@@ -38,7 +39,7 @@ html {
 
 /* Electric Background Animation */
 .electric-bg {
-  background: linear-gradient(45deg, #0f0f23, #1a1a3e, #0f0f23);
+  background: linear-gradient(45deg, #9393e2, #1a1a3e, #0f0f23);
   background-size: 400% 400%;
   animation: electricFlow 8s ease-in-out infinite;
   position: relative;

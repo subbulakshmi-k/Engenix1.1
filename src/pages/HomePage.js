@@ -1,61 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const HomePage = () => {
+  const { addToCart } = useCart();
+  const [addedToCart, setAddedToCart] = useState({});
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setAddedToCart(prev => ({ ...prev, [product.id]: true }));
+    
+    // Reset the added state after 2 seconds
+    setTimeout(() => {
+      setAddedToCart(prev => ({ ...prev, [product.id]: false }));
+    }, 2000);
+  };
+
   const featuredProducts = [
     {
       id: 1,
       name: 'LED Smart Bulbs',
-      price: '₹299',
-      image: 'https://images.unsplash.com/photo-1606838512749-b6e5d6e71b9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      price: 299,
+      image: 'https://th.bing.com/th/id/OIP.JMHL5DZu1HD3I1uEiX_JWgHaHa?w=192&h=194&c=7&r=0&o=7&pid=1.7&rm=3',
       category: 'Lighting',
       icon: '💡',
-      color: 'from-yellow-400 to-orange-500'
+      color: 'from-yellow-400 to-orange-500',
+      description: 'Energy-efficient smart LED bulbs with app control'
     },
     {
       id: 2,
       name: 'Circuit Breakers',
-      price: '₹1,299',
+      price: 1299,
       image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
       category: 'Safety',
       icon: '🔒',
-      color: 'from-red-400 to-pink-500'
+      color: 'from-red-400 to-pink-500',
+      description: 'High-quality MCB circuit breakers for electrical safety'
     },
     {
       id: 3,
       name: 'Power Outlets',
-      price: '₹199',
+      price: 199,
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
       category: 'Accessories',
       icon: '🔌',
-      color: 'from-blue-400 to-cyan-500'
+      color: 'from-blue-400 to-cyan-500',
+      description: 'Modern modular power outlets with USB charging'
     },
     {
       id: 4,
       name: 'LED Strip Lights',
-      price: '₹599',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      price: 599,
+      image: 'https://tse2.mm.bing.net/th/id/OIP.GBNxhrIT6eDy4dZ7wEDqawHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       category: 'Lighting',
       icon: '🌈',
-      color: 'from-purple-400 to-pink-500'
+      color: 'from-purple-400 to-pink-500',
+      description: 'Flexible RGB LED strip lights with remote control'
     },
     {
       id: 5,
       name: 'Smart Switches',
-      price: '₹899',
-      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      price: 899,
+      image: 'https://tse2.mm.bing.net/th/id/OIP.gXKNlIXWYcjHOGcl8xX3gwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
       category: 'Smart Home',
       icon: '📱',
-      color: 'from-green-400 to-blue-500'
+      color: 'from-green-400 to-blue-500',
+      description: 'WiFi-enabled smart switches with voice control'
     },
     {
       id: 6,
       name: 'Solar Panels',
-      price: '₹15,999',
+      price: 15999,
       image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
       category: 'Solar',
       icon: '☀️',
-      color: 'from-orange-400 to-yellow-500'
+      color: 'from-orange-400 to-yellow-500',
+      description: 'High-efficiency solar panels for sustainable energy'
     }
   ];
 
@@ -214,9 +234,13 @@ const HomePage = () => {
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3" style={{fontFamily: 'Exo 2'}}>{product.name}</h3>
-                <p className="text-3xl font-bold text-cyan-400 mb-6 neon-text" style={{fontFamily: 'Orbitron'}}>{product.price}</p>
-                <button className="w-full btn-electric">
-                  🛒 Add to Cart
+                <p className="text-3xl font-bold text-cyan-400 mb-6 neon-text" style={{fontFamily: 'Orbitron'}}>₹{product.price.toLocaleString()}</p>
+                <button 
+                  onClick={() => handleAddToCart(product)}
+                  className={`w-full btn-electric ${addedToCart[product.id] ? 'bg-green-600 hover:bg-green-700' : ''}`}
+                  disabled={addedToCart[product.id]}
+                >
+                  {addedToCart[product.id] ? '✅ Added to Cart!' : '🛒 Add to Cart'}
                 </button>
               </div>
             ))}

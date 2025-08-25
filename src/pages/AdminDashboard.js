@@ -7,17 +7,9 @@ import MessageDetailModal from '../components/MessageDetailModal';
 const AdminDashboard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen] = useState(true);
   const [messages, setMessages] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [newProduct, setNewProduct] = useState({
-    name: '',
-    price: '',
-    category: '',
-    description: '',
-    image: ''
-  });
-  const [editingProduct, setEditingProduct] = useState(null);
+  const [products] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
   const [selectedMessage, setSelectedMessage] = useState(null);

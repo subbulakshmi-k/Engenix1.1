@@ -11,6 +11,7 @@ import ContactPage from './pages/ContactPage';
 import AdminDashboard from './pages/AdminDashboard';
 import UserLogin from './pages/UserLogin';
 import AdminLogin from './pages/AdminLogin';
+import ShoppingCart from './pages/ShoppingCart';
 import './index.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/cart" element={<ShoppingCart />} />
               <Route path="/login" element={<UserLogin />} />
               <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
