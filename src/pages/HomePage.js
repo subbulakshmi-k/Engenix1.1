@@ -123,7 +123,7 @@ const HomePage = () => {
                   ⚡ Premium Electric Solutions
                 </span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight" style={{fontFamily: 'Orbitron'}}>
+              <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-white" style={{fontFamily: 'Orbitron'}}>
                 <span className="neon-text text-cyan-400">POWER</span>
                 <br />
                 <span className="text-white">YOUR</span>
@@ -258,10 +258,10 @@ const HomePage = () => {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white-900 mb-4">
               Professional Services
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-white-600 max-w-2xl mx-auto">
               Expert electrical services for all your residential and commercial needs
             </p>
           </div>
@@ -275,7 +275,7 @@ const HomePage = () => {
                   </span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-white">{service.description}</p>
               </div>
             ))}
           </div>
@@ -287,7 +287,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
+      <br></br>
       {/* Stats Section */}
       <section className="section-padding bg-primary-600 text-white">
         <div className="max-w-7xl mx-auto">
@@ -311,7 +311,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
+          
+          <br></br>
       {/* CTA Section */}
       <section className="section-padding bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -322,7 +323,7 @@ const HomePage = () => {
             Get in touch with our experts for personalized electrical solutions
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary bg-electric-yellow text-gray-900 hover:bg-yellow-400">
+            <Link to="/contact" className="btn-primary bg-electric-yellow text-gray-990 hover:bg-yellow-420">
               Get Free Quote
             </Link>
             <a href="tel:+91 8778485218" className="btn-secondary">
