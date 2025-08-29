@@ -13,7 +13,7 @@ const AboutPage = () => {
     {
       name: 'Priya Sharma',
       position: 'Project Manager',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-ZHqWA3ajb0g2TmGMYzSoRpiR5HqjelAKfw&sht',
       experience: '8+ years',
       description: 'Ensures smooth project execution and maintains quality standards across all installations.'
     },

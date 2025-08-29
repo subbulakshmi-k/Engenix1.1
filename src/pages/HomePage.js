@@ -76,7 +76,27 @@ const HomePage = () => {
       icon: '☀️',
       color: 'from-orange-400 to-yellow-500',
       description: 'High-efficiency solar panels for sustainable energy'
-    }
+    },
+    {
+      id: 7,
+      name: 'Voltage Stabilizers',
+      price: 15999,
+      image: 'https://bkmiami.com/wp-content/uploads/2016/06/69BAR3000_angle.jpg',
+      category: 'voltage',
+      icon: '☀️',
+      color: 'from-orange-400 to-yellow-500',
+      description: 'High-efficiency solar panels for sustainable energy'
+    },
+    {
+      id: 8,
+      name: 'Power Meters',
+      price: 599,
+      image: 'https://www.instrumentation2000.com/media/catalog/tmp/category/power-meters_1.jpg',
+      category: 'Lighting',
+      icon: '🌈',
+      color: 'from-purple-400 to-pink-500',
+      description: 'Flexible RGB LED strip lights with remote control'
+    },
   ];
 
   const services = [
@@ -91,7 +111,7 @@ const HomePage = () => {
       icon: '⚡',
       title: 'Wiring Services',
       description: 'Complete home and commercial wiring solutions',
-      color: 'from-yellow-400 to-orange-500',
+      color: 'from-yellow-400 to-orange=-500',
       bgColor: 'bg-yellow-500/10'
     },
     {
@@ -212,7 +232,7 @@ const HomePage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-8 mb-16">
             {featuredProducts.map((product) => (
               <div key={product.id} className="electric-card group hover:scale-105 transition-all duration-500 lightning">
                 <div className="aspect-square mb-6 overflow-hidden rounded-xl relative">

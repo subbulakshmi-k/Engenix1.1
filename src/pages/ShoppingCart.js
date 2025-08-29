@@ -99,7 +99,7 @@ const ShoppingCart = () => {
                         >
                           -
                         </button>
-                        <span className="w-8 text-center font-medium">{item.quantity}</span>
+                        <span className="w-8 text-center font-medium text-black">{item.quantity}</span>
                         <button
                           onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                           className="w-8 h-8 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition-colors"
@@ -129,30 +129,30 @@ const ShoppingCart = () => {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Subtotal ({totalItems} items)</span>
-                    <span className="font-semibold">₹{totalPrice.toLocaleString()}</span>
+                    <span className="font-semibold text-black">₹{totalPrice.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Shipping</span>
-                    <span className="font-semibold">Free</span>
+                    <span className="font-semibold text-black">Free</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Tax</span>
-                    <span className="font-semibold">₹0</span>
+                    <span className="font-semibold text-black">₹0</span>
                   </div>
                   <hr className="border-gray-200" />
-                  <div className="flex justify-between text-lg font-bold">
+                  <div className="flex justify-between text-black font-bold">
                     <span>Total</span>
-                    <span className="text-primary-600">₹{totalPrice.toLocaleString()}</span>
+                    <span className="text-black-600">₹{totalPrice.toLocaleString()}</span>
                   </div>
                 </div>
 
-                <button className="w-full btn-primary py-3 text-lg mb-4">
+                <button className="w-full btn-primary py-3 text-black mb-4">
                   Proceed to Checkout
                 </button>
 
                 <Link
                   to="/products"
-                  className="w-full btn-secondary py-3 text-lg text-center block"
+                  className="w-full btn-secondary py-3 text-black text-center block"
                 >
                   Continue Shopping
                 </Link>
