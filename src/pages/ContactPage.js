@@ -12,16 +12,51 @@ const ContactPage = () => {
     script.async = true;
     script.defer = true;
     window.initMap = () => {
-      const map = new window.google.maps.Map(document.getElementById('map'), {
-        center: { lat: 9.9258, lng: 78.1198 }, // Coordinates for Madurai
-        zoom: 15,
-      });
-
-      new window.google.maps.Marker({
-        position: { lat: 9.9258, lng: 78.1198 },
-        map: map,
-        title: 'Raghav Electric Location',
-      });
+      // Try to get user's current location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLatLng = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            const map = new window.google.maps.Map(document.getElementById('map'), {
+              center: userLatLng,
+              zoom: 15,
+            });
+            new window.google.maps.Marker({
+              position: userLatLng,
+              map: map,
+              title: 'Your Current Location',
+            });
+          },
+          () => {
+            // If user denies or error, fallback to default location
+            const defaultLatLng = { lat: 9.9258, lng: 78.1198 };
+            const map = new window.google.maps.Map(document.getElementById('map'), {
+              center: defaultLatLng,
+              zoom: 15,
+            });
+            new window.google.maps.Marker({
+              position: defaultLatLng,
+              map: map,
+              title: 'Electric Location',
+            });
+          }
+        );
+      } else {
+        // Browser doesn't support Geolocation, fallback to default location
+        const defaultLatLng = { lat: 9.9258, lng: 78.1198 };
+        const map = new window.google.maps.Map(document.getElementById('map'), {
+          center: defaultLatLng,
+          zoom: 15,
+        });
+        new window.google.maps.Marker({
+          position: defaultLatLng,
+          map: map,
+          title: 'Electric Location',
+        });
+      }
     };
     
     document.head.appendChild(script);
@@ -65,7 +100,7 @@ const ContactPage = () => {
         </svg>
       ),
       title: 'Visit Our Store',
-details: ['Jeeva Street, Pasupon Nagar, Palaganatham, Madurai - 625003, India'],
+      details: ['Jeeva Street, Pasupon Nagar, Palaganatham, Madurai - 625003, India'],
       action: 'Get Directions'
     },
     {
@@ -75,7 +110,7 @@ details: ['Jeeva Street, Pasupon Nagar, Palaganatham, Madurai - 625003, India'],
         </svg>
       ),
       title: 'Call Us',
-details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
+      details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
       action: 'Call Now'
     },
     {
@@ -131,14 +166,14 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="name" className="black text-sm font-medium text-gray-700 mb-2">
                       Full Name *
                     </label>
                     <input
                       type="text"
                       id="name"
                       {...register('name', { required: 'Name is required' })}
-                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
+                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black ${
                         errors.name ? 'border-red-500' : 'border-gray-300'
                       }`}
                       placeholder="Enter your full name"
@@ -156,7 +191,7 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
                       type="tel"
                       id="phone"
                       {...register('phone')}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -166,21 +201,21 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
-                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
-                      errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="Enter your email address"
-                  />
+                    <input
+                      type="email"
+                      id="email"
+                      {...register('email', { 
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: 'Invalid email address'
+                        }
+                      })}
+                      className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black ${
+                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                      placeholder="Enter your email address"
+                    />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
                   )}
@@ -193,7 +228,7 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
                   <select
                     id="service"
                     {...register('service')}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black"
                   >
                     <option value="">Select a service</option>
                     <option value="electrical-installation">Electrical Installation</option>
@@ -214,10 +249,9 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
                     id="message"
                     rows="5"
                     {...register('message', { required: 'Message is required' })}
-                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
+                    className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent electric-input ${
                       errors.message ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="Tell us about your electrical needs..."
+                    } text-black`}
                   ></textarea>
                   {errors.message && (
                     <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -226,7 +260,7 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
 
                 <button
                   type="submit"
-                  className="w-full btn-primary"
+                  className="w-full btn-primary text-black"
                 >
                   Send Message
                 </button>
@@ -298,28 +332,7 @@ details: ['+91 8778584218', '+91 9442004969', 'Mon-Sat: 9:00 AM - 9:00 PM'],
           </div>
           
           {/* Placeholder for map - In a real application, you would integrate Google Maps or similar */}
-          <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Interactive Map</h3>
-              <p className="text-gray-600 mb-4">Jeeva street pasupon nagar palaganatham madurai-625003,Tamilnadu </p>
-              <button className="btn-primary">
-                    <a
-  href="https://maps.app.goo.gl/7QBPdgHDGNt2HzmQ7"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="btn-primary"
->
-  View on Google Maps
-</a>
-              </button>
-            </div>
-          </div>
+          <div id="map" className="bg-gray-200 rounded-lg h-96 w-full"></div>
         </div>
       </section>
 
