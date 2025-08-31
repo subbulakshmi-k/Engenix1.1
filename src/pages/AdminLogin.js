@@ -67,7 +67,7 @@ const AdminLogin = () => {
                   name="username"
                   value={credentials.username}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black"
                   placeholder="Enter your username"
                   required
                 />
@@ -83,7 +83,7 @@ const AdminLogin = () => {
                   name="password"
                   value={credentials.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-black"
                   placeholder="Enter your password"
                   required
                 />
