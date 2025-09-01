@@ -1,79 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+
+const mapContainerStyle = {
+  width: '100%',
+  height: '24rem', // h-96 equivalent
+};
+
+const defaultCenter = { lat: 9.9258, lng: 78.1198 }; // Default location fallback
 
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState(null);
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  useEffect(() => {
-    // Load Google Maps script
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    window.initMap = () => {
-      // Try to get user's current location
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const userLatLng = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-            const map = new window.google.maps.Map(document.getElementById('map'), {
-              center: userLatLng,
-              zoom: 15,
-            });
-            new window.google.maps.Marker({
-              position: userLatLng,
-              map: map,
-              title: 'Your Current Location',
-            });
-          },
-          () => {
-            // If user denies or error, fallback to default location
-            const defaultLatLng = { lat: 9.9258, lng: 78.1198 };
-            const map = new window.google.maps.Map(document.getElementById('map'), {
-              center: defaultLatLng,
-              zoom: 15,
-            });
-            new window.google.maps.Marker({
-              position: defaultLatLng,
-              map: map,
-              title: 'Electric Location',
-            });
-          }
-        );
-      } else {
-        // Browser doesn't support Geolocation, fallback to default location
-        const defaultLatLng = { lat: 9.9258, lng: 78.1198 };
-        const map = new window.google.maps.Map(document.getElementById('map'), {
-          center: defaultLatLng,
-          zoom: 15,
-        });
-        new window.google.maps.Marker({
-          position: defaultLatLng,
-          map: map,
-          title: 'Electric Location',
-        });
-      }
-    };
-    
-    document.head.appendChild(script);
+  // Load Google Maps script with API key from environment variable
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
 
-    return () => {
-      // Cleanup
-      if (window.initMap) {
-        delete window.initMap;
-      }
-    };
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCurrentPosition({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        () => {
+          setCurrentPosition(defaultCenter);
+        }
+      );
+    } else {
+      setCurrentPosition(defaultCenter);
+    }
   }, []);
 
   const onSubmit = (data) => {
-    // In a real application, you would send this data to your backend
     console.log('Form submitted:', data);
-    
-    // Store in localStorage for demo purposes (Admin Dashboard will read this)
     const existingMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
     const newMessage = {
       ...data,
@@ -83,11 +48,8 @@ const ContactPage = () => {
     };
     existingMessages.push(newMessage);
     localStorage.setItem('contactMessages', JSON.stringify(existingMessages));
-    
     setIsSubmitted(true);
     reset();
-    
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
@@ -131,6 +93,9 @@ const ContactPage = () => {
     { day: 'Sunday', hours: '10:00 AM - 4:00 PM' },
     { day: 'Emergency Service', hours: '24/7 Available' }
   ];
+
+  if (loadError) return <div>Error loading maps</div>;
+  if (!isLoaded) return <div>Loading Maps...</div>;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -331,8 +296,16 @@ const ContactPage = () => {
             <p className="text-gray-600">Visit our store for in-person consultation and product viewing</p>
           </div>
           
-          {/* Placeholder for map - In a real application, you would integrate Google Maps or similar */}
-          <div id="map" className="bg-gray-200 rounded-lg h-96 w-full"></div>
+          {/* Real-time Google Map */}
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={15}
+            center={currentPosition || defaultCenter}
+          >
+            {currentPosition && (
+              <Marker position={currentPosition} title="Your Current Location" />
+            )}
+          </GoogleMap>
         </div>
       </section>
 
