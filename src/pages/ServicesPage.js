@@ -204,6 +204,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+      <br></br>
 
       {/* Why Choose Us */}
       <section className="section-padding bg-gray-900 text-white">
@@ -240,7 +241,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
-
+            <br></br>
       {/* CTA Section */}
       <section className="section-padding bg-primary-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -257,6 +258,7 @@ const ServicesPage = () => {
             </a>
           </div>
         </div>
+        <br></br>
       </section>
     </div>
   );
