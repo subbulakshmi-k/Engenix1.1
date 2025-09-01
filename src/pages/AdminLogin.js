@@ -105,11 +105,7 @@ const AdminLogin = () => {
             </form>
 
             <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <p className="text-xs text-gray-600 text-center">
-                <strong>Admin Credentials:</strong><br />
-                Username: sobika2742003@gmail.com<br />
-                Password: **********
-              </p>
+            
             </div>
           </div>
         </div>
