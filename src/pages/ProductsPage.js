@@ -8,161 +8,160 @@ const ProductsPage = () => {
 
     // Comprehensive product data with local images
     const products = [
-        { 
+      { 
             id: 1, 
             name: 'LED Smart Bulbs', 
             price: 300, 
             description: 'Energy-efficient smart LED bulbs with app control and voice assistant support',
-            image: 'https://th.bing.com/th/id/OIP.JMHL5DZu1HD3I1uEiX_JWgHaHa?w=192&h=194&c=7&r=0&o=7&pid=1.7&rm=3',
+            image: 'https://cdn.pixabay.com/photo/2017/08/20/20/20/lamp-2663053_1280.jpg',
         },
         { 
             id: 2, 
             name: 'Circuit Breakers', 
             price: 1599, 
             description: 'High-quality MCB circuit breakers for electrical safety and protection',
-            image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=400&fit=crop',
+            image: 'https://cdn.pixabay.com/photo/2017/03/15/20/31/control-cabinet-2147370_640.jpg',
         },
         { 
             id: 3, 
             name: 'Power Outlets', 
             price: 450, 
             description: 'Modern modular power outlets with USB charging ports and surge protection',
-            image:'https://energysavings.com/wp-content/uploads/2024/02/electrical-outlets-closeup-of-plug.jpg',
+            image:'https://cdn.pixabay.com/photo/2019/12/23/20/34/concent-4715347_640.jpg',
         },
         { 
             id: 4, 
             name: 'Surge Protectors', 
             price: 899, 
             description: 'Advanced surge protection devices for sensitive electronics',
-            image: 'https://spy.com/wp-content/uploads/2023/03/Superdanny-Surge-Protector-with-22-AC-Outlets-and-6-USB-Charging-Ports.jpeg?resize=142'
-        },
+            image: 'https://cdn.pixabay.com/photo/2017/04/04/17/13/belkin-2202185_1280.jpg'
+        }, 
         { 
             id: 5, 
             name: 'Electrical Wires', 
             price: 250, 
             description: 'High-quality copper electrical wires for various applications',
-            image: 'https://www.thespruce.com/thmb/5xyIcVbk0dScg5yFoQHzKyfvI_U=/1500x1000/filters:fill(auto,1)/electrical-wire-color-coding-1152863_hero-572ac6b6d4924c92942c55e31595fa3c.jpg'
+            image: 'https://cdn.pixabay.com/photo/2014/10/19/19/57/network-cables-494649_640.jpg'
         },
         { 
             id: 6, 
             name: 'Smart Switches', 
             price: 699, 
             description: 'WiFi enabled smart switches with remote control capability',
-            image: 'https://tse3.mm.bing.net/th/id/OIP.7S51CkuD6Y5HJZEY_jPTOwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3itches.jpg'
+            image: 'https://cdn.pixabay.com/photo/2019/05/14/17/56/button-4203036_1280.jpg'
         },
         { 
             id: 7, 
             name: 'Voltage Stabilizers', 
             price: 2499, 
             description: 'Automatic voltage stabilizers for consistent power supply',
-            image: 'https://bkmiami.com/wp-content/uploads/2016/06/69BAR3000_angle.jpg'
+            image: 'https://cdn.pixabay.com/photo/2023/05/16/15/34/wires-7997980_640.jpg'
         },
         { 
             id: 8, 
             name: 'Cable Management', 
             price: 199, 
             description: 'Professional cable management solutions and organizers',
-            image: 'https://www.sunbirddcim.com/sites/default/files/AdobeStock_289763213_0.jpg'
+            image: 'https://cdn.pixabay.com/photo/2015/11/07/15/19/pliers-1031980_640.jpg'
         },
         { 
             id: 9, 
             name: 'Electrical Tools Kit', 
             price: 1899, 
             description: 'Complete set of professional electrical tools for technicians',
-            image: 'https://www.electricianinformationresource.com/images/electrical-tool-kit-displayed.jpg'
+            image: 'https://cdn.pixabay.com/photo/2020/04/10/10/44/black-5025175_640.jpg'
         },
         { 
             id: 10, 
             name: 'Power Meters', 
             price: 1299, 
             description: 'Digital power meters for energy consumption monitoring',
-            image: 'https://www.instrumentation2000.com/media/catalog/tmp/category/power-meters_1.jpg'
+            image: 'https://cdn.pixabay.com/photo/2017/08/06/20/09/electricity-2595842_1280.jpg'
         },
         { 
             id: 11, 
             name: 'Industrial Plugs', 
             price: 599, 
             description: 'Heavy-duty industrial plugs and sockets for commercial use',
-            image: 'https://tse2.mm.bing.net/th/id/OIP.bhWzRCchs0-zwyI_tGL7hwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3ontent/uploads/2020/09/industrial-plugs.jpg'
+            image: 'https://cdn.pixabay.com/photo/2023/02/04/22/10/pipe-system-7768312_1280.jpg'
         },
         { 
             id: 12, 
             name: 'LED Panel Lights', 
             price: 899, 
             description: 'Modern LED panel lights for office and commercial spaces',
-            image: 'https://tse4.mm.bing.net/th/id/OIP.BjV8I3m54AXfCEHwUqDoiwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3'
+            image: 'https://cdn.pixabay.com/photo/2020/05/19/11/31/star-5190356_640.jpg'
         },
         { 
             id: 13, 
             name: 'Electrical Testers', 
             price: 499, 
             description: 'Professional electrical testers and multimeters',
-            image: 'https://tse4.mm.bing.net/th/id/OIP.NEr_sLWVj-M5ACB-IUe01QHaGR?rs=1&pid=ImgDetMain&o=7&rm=34.mm.bing.net/th/id/OIP.NEr_sLWVj-M5ACB-IUe01QHaGR?rs=1&pid=ImgDetMain&o=7&rm=3lectricianinformationresource.com/images/electrical-testers.jpg'
+            image: 'https://cdn.pixabay.com/photo/2017/09/19/22/10/tool-2766835_1280.jpg'
         },
         { 
             id: 14, 
             name: 'Distribution Boards', 
             price: 1999, 
             description: 'Main distribution boards with circuit protection',
-            image: 'https://tse4.mm.bing.net/th/id/OIP.ggms43SVtFBHOgrKTC_HiAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3https://tse4.mm.bing.net/th/id/OIP.ggms43SVtFBHOgrKTC_HiAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3-boards.jpg'
+            image: 'https://cdn.pixabay.com/photo/2017/05/07/16/54/emergency-exit-2292982_640.jpg'
         },
         { 
             id: 15, 
             name: 'Solar Inverters', 
             price: 8999, 
             description: 'High-efficiency solar power inverters for renewable energy',
-            image: 'https://facts.net/wp-content/uploads/2025/02/28-facts-about-solar-inverter-1738947310.jpg'
+            image: 'https://cdn.pixabay.com/photo/2015/04/05/16/26/solar-cells-708178_640.jpg'
         },
         { 
             id: 16, 
             name: 'Emergency Lights', 
             price: 699, 
             description: 'Automatic emergency lighting systems for safety',
-            image: 'https://tse3.mm.bing.net/th/id/OIP.Yw0t9GbmcLwvRheEPxF_ygHaE8?rs=1&pid=ImgDetMain&o=7&rm=3ncy-lights.jpg'
+            image: 'https://cdn.pixabay.com/photo/2016/11/29/05/01/lights-1867437_640.jpg'
         },
         { 
             id: 17, 
             name: 'Cable Connectors', 
             price: 149, 
             description: 'Various types of electrical cable connectors and terminals',
-            image: 'https://tse2.mm.bing.net/th/id/OIP.jCakDVfrt7me5GXSNIVBqwHaE5?rs=1&pid=ImgDetMain&o=7&rm=3/images/cable-connectors.jpg'
+            image: 'https://cdn.pixabay.com/photo/2017/01/19/06/02/idc-cable-1991608_640.jpg'
         },
         { 
             id: 18, 
             name: 'Power Adapters', 
             price: 349, 
             description: 'Universal power adapters and converters',
-            image: 'https://images-na.ssl-images-amazon.com/images/I/71n1nqo0UmL._AC_SL1500_.jpgple.com/images/power-adapters.jpg'
+            image: 'https://cdn.pixabay.com/photo/2020/05/30/17/18/wind-power-plant-5239642_640.jpg'
         },
         { 
             id: 19, 
             name: 'Electrical Enclosures', 
             price: 1299, 
             description: 'Weatherproof electrical enclosures and cabinets',
-            image: 'https://tse2.mm.bing.net/th/id/OIP.jFhr-95VfCZUSU2ucM9qVwHaFS?rs=1&pid=ImgDetMain&o=7&rm=3.com/images/electrical-enclosures.jpg'
+            image: 'https://cdn.pixabay.com/photo/2012/12/20/10/13/electric-fence-71378_640.jpg'
         },
         { 
             id: 20, 
             name: 'Smart Home Hub', 
             price: 2499, 
             description: 'Central hub for smart home automation and control',
-            image: 'https://tse1.mm.bing.net/th/id/OIP.lIihQ9konsAXzv3v9e5e3QHaEQ?rs=1&pid=ImgDetMain&o=7&rm=3le.com/images/smart-home-hub.jpg'
+            image: 'https://cdn.pixabay.com/photo/2018/10/15/21/59/smarthome-3750136_640.jpg'
         },
         { 
             id: 21, 
             name: 'Battery Backup', 
             price: 3999, 
             description: 'Uninterruptible power supply systems',
-            image: 'https://www.lifewire.com/thmb/VlMw7uVnIiLgB4Fe2Zfm-dmEBMU=/fit-in/1500x1191/filters:no_upscale():max_bytes(150000):strip_icc()/817Z5KQfqXL._AC_SL1500_-ece09c987f5840bbbbf3b475d58dd147.jpg'
+            image: 'https://cdn.pixabay.com/photo/2018/04/14/16/13/hard-disc-3319335_640.jpg'
         },
         { 
             id: 22, 
             name: 'Wiring Accessories', 
             price: 199, 
             description: 'Complete range of wiring accessories and components',
-            image: 'https://tse1.mm.bing.net/th/id/OIP.D68c-7Cx97VWlOqgSoKI8QHaF6?rs=1&pid=ImgDetMain&o=7&rm=3com/images/wiring-accessories.jpg'
+            image: 'https://cdn.pixabay.com/photo/2020/04/05/19/31/insulation-5007566_640.jpg'
         }
-    ];
 
     const handleRate = (productId, rating) => {
         setProductRatings(prev => ({
