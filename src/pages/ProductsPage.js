@@ -8,7 +8,7 @@ const ProductsPage = () => {
 
     // Comprehensive product data with local images
     const products = [
-      { 
+       { 
             id: 1, 
             name: 'LED Smart Bulbs', 
             price: 300, 
@@ -162,6 +162,7 @@ const ProductsPage = () => {
             description: 'Complete range of wiring accessories and components',
             image: 'https://cdn.pixabay.com/photo/2020/04/05/19/31/insulation-5007566_640.jpg'
         }
+    ];
 
     const handleRate = (productId, rating) => {
         setProductRatings(prev => ({
